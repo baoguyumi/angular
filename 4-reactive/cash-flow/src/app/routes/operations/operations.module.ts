@@ -7,7 +7,7 @@ import { NewComponent } from './new/new.component';
 import { ListComponent } from './list/list.component';
 import { RowComponent } from './list/row/row.component';
 import { OperationsService } from 'app/routes/operations/_data/operations.service';
-import { SharedModule } from "app/core/shared/shared.module";
+import { SharedModule } from 'app/core/shared/shared.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +16,6 @@ import { SharedModule } from "app/core/shared/shared.module";
   ],
   declarations: [
     OperationsComponent, NewComponent, ListComponent, RowComponent],
-  providers: [OperationsService]
+  providers: []
 })
 export class OperationsModule { }

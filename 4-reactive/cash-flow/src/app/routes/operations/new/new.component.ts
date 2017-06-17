@@ -1,9 +1,9 @@
 import { ValidatorsService } from './../../../core/shared/forms/validators.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
-import { Operation } from "app/routes/operations/_data/operation.model";
-import { OperationsService } from "app/routes/operations/_data/operations.service";
-import { FormToolsService } from "app/core/shared/forms/form-tools.service";
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Operation } from 'app/routes/operations/_data/operation.model';
+import { OperationsService } from 'app/routes/operations/_data/operations.service';
+import { FormToolsService } from 'app/core/shared/forms/form-tools.service';
 
 @Component({
   selector: 'cf-new',
@@ -73,7 +73,7 @@ export class NewComponent implements OnInit {
   }
 
   getControlErrors(controlName: string): string {
-    let controlErrors = "";
+    let controlErrors = '';
     const control = this.getControl(controlName);
     if (control && control.errors) {
       Object.keys(control.errors).forEach(error => {
