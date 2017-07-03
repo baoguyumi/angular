@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { OperationsService } from "app/routes/operations/_data/operations.service";
-import { Operation } from "app/routes/operations/_data/operation.model";
+import { ActivatedRoute } from '@angular/router';
+import { OperationsService } from 'app/routes/operations/_data/operations.service';
+import { Operation } from 'app/routes/operations/_data/operation.model';
 
 @Component({
   selector: 'cf-item',
