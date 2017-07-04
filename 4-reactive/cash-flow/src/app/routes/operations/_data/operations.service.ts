@@ -20,6 +20,10 @@ export class OperationsService {
     return this.operations;
   }
 
+  getOperationById(id): Operation {
+    return this.operations.find(o => o._id === id);
+  }
+
   newOperation(): Operation {
     return new Operation(new Date(), 0, "", 1, "");
   }
