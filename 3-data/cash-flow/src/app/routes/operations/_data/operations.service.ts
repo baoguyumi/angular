@@ -14,7 +14,11 @@ export class OperationsService {
     return this.operations;
   }
 
-  newOperation(): Operation {
+  getOperationById(id): Operation {
+    return this.operations.find(o => o._id === id);
+  }
+
+  createNewOperation(): Operation {
     const newOperation = new Operation('', new Date(), 0);
     newOperation.description = 'Description not provided';
     return newOperation;

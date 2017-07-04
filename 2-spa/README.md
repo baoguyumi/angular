@@ -17,4 +17,7 @@
  ng g c routes/operations/new
  ng g c routes/operations/list
 
+ // params
+ ng g c routes/operations/item
+
 ```

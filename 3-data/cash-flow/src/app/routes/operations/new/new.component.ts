@@ -33,14 +33,14 @@ export class NewComponent implements OnInit {
 
   constructor(private operationsService: OperationsService) {
 
-   }
+  }
 
   ngOnInit() {
     this.createNewOperation();
   }
 
   createNewOperation() {
-    this.operation = this.operationsService.newOperation();
+    this.operation = this.operationsService.createNewOperation();
   }
 
   saveOperation() {

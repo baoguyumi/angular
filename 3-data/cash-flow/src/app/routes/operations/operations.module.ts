@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { RowComponent } from './list/row/row.component';
 import { OperationsService } from 'app/routes/operations/_data/operations.service';
 import { FormsModule } from '@angular/forms';
+import { ItemComponent } from './item/item.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     OperationsRoutingModule
   ],
   declarations: [
-    OperationsComponent, NewComponent, ListComponent, RowComponent],
+    OperationsComponent, NewComponent, ListComponent, RowComponent, ItemComponent],
   providers: [OperationsService]
 })
 export class OperationsModule { }
