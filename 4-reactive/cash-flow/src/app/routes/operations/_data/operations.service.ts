@@ -24,8 +24,8 @@ export class OperationsService {
     return this.operations.find(o => o._id === id);
   }
 
-  newOperation(): Operation {
-    return new Operation(new Date(), 0, "", 1, "");
+  createNewOperation(): Operation {
+    return new Operation(new Date(), 0, '', 1, '');
   }
 
   saveOperation(newOperation: Operation) {
@@ -41,7 +41,7 @@ export class OperationsService {
   }
 
   deleteOperation(operation: Operation) {
-    let index: number = this.operations.indexOf(operation);
+    const index: number = this.operations.indexOf(operation);
     if (index !== -1) {
       this.operations.splice(index, 1);
       this.emitOperationCount();

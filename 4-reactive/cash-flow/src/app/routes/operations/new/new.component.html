@@ -13,14 +13,18 @@
              class="float-right">
              Description is required
       </small>
-      <dl>
-        <dt>touched</dt>
-        <dd>{{ operationForm.get('description').touched | json }}</dd>
-        <dt>dirty</dt>
-        <dd>{{ operationForm.get('description').dirty | json }}</dd>
-        <dt>errors</dt>
-        <dd>{{ operationForm.get('description').errors | json }}</dd>
-      </dl>
+      <em class="row">touched: </em>
+      <code class="row">
+      <strong>{{ operationForm.get('description').touched | json }}</strong>
+    </code>
+      <em class="row">dirty: </em>
+      <code class="row">
+      <strong>{{ operationForm.get('description').dirty | json }}</strong>
+    </code>
+      <em class="row">errors: </em>
+      <code class="row">
+      <strong>{{ operationForm.get('description').errors | json }}</strong>
+    </code>
     </section>
     <section name="amount-control">
       <label for="amount">Amount:</label>
@@ -52,9 +56,9 @@
     <code class="row">
       <strong>{{ operation | json }}</strong>
     </code>
-    <em class="row">From Status: </em>
+    <em class="row">Form Status: </em>
     <code class="row">
-    <strong>{{ operationForm.status | json }}</strong>
-  </code>
+      <strong>{{ operationForm.status | json }}</strong>
+    </code>
   </aside>
 </main>
