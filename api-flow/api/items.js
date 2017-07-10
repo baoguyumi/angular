@@ -24,14 +24,14 @@ module.exports = (app, url) => {
   app.route(`${url}/:id`)
     .get((req, res) => {
       const index = getIndexById(req.params.id);
-      if (index)
+      if (index >= 0)
         res.json(items[index]);
       else
         res.status(404).send();
     })
     .put((req, res) => {
       const index = getIndexById(req.params.id);
-      if (index) {
+      if (index >= 0) {
         items[index] = req.body;
         res.json(items[index]);
       } else {
@@ -41,7 +41,7 @@ module.exports = (app, url) => {
     })
     .delete((req, res) => {
       const index = getIndexById(req.params.id);
-      if (index) {
+      if (index >= 0) {
         items.splice(index, 1)
         res.status(204).send();
       } else {
