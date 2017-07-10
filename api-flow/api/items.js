@@ -11,7 +11,7 @@ module.exports = (app, rutaitems) => {
         res.status(204).send();
     })
     .post((req, res) => {
-      let nuevoItem = req.body
+      const nuevoItem = req.body
       nuevoItem._id = new Date().getTime().toString();
       items.push(nuevoItem)
       res.status(201).json(nuevoItem);
@@ -23,26 +23,26 @@ module.exports = (app, rutaitems) => {
   // // api/pub/items/159
   app.route(`${rutaitems}/:id`)
     .get((req, res) => {
-      let itemsFound = getItemById(req.params.id);
-      if (itemsFound && itemsFound.length > 0)
-        res.json(itemsFound[0]);
+      const index = getIndexById(req.params.id);
+      if (index)
+        res.json(items[index]);
       else
         res.status(404).send();
     })
     .put((req, res) => {
-      let itemsFound = getItemById(req.params.id);
-      if (itemsFound && itemsFound.length > 0) {
-        itemsFound[0] = req.body;
-        res.json(itemsFound[0]);
+      const index = getIndexById(req.params.id);
+      if (index) {
+        items[index] = req.body;
+        res.json(items[index]);
       } else {
         res.status(404).send();
       }
 
     })
     .delete((req, res) => {
-      let itemsFound = getItemById(req.params.id);
-      if (itemsFound && itemsFound.length > 0) {
-        items.splice(req.params.id, 1)
+      const index = getIndexById(req.params.id);
+      if (index) {
+        items.splice(index, 1)
         res.status(204).send();
       } else {
         res.status(404).send();
@@ -50,7 +50,7 @@ module.exports = (app, rutaitems) => {
     });
 
 
-  var getItemById = (id) => items.filter(i => i._id == id);
+  var getIndexById = (id) => items.findIndex(i => i._id == id);
 
 
   var resError = (err, res) => {

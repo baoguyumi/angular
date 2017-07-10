@@ -12,9 +12,5 @@ const items = require('./items.js');
 module.exports = app => {
     usuarios(app, '/api/pub/usuarios');
     sesiones(app, '/api/pub/sesiones');
-    maestros(app, '/api/pub/maestros');
-    movimientos(app, '/api/priv/movimientos');
-    mensajes(app, '/api/priv/mensajes');
-    eventos(app, '/api/priv/eventos');
     items(app, '/api/pub/items');
 }
