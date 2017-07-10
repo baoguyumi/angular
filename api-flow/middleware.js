@@ -6,7 +6,7 @@
 module.exports.useMiddleware = app => {
     const cors = require('cors');
     const bodyParser = require('body-parser')
-    const seguridad = require('./seguridad/seguridad.js')
+    const security = require('./security/security.js')
 
     app.use(cors());
 
@@ -20,7 +20,7 @@ module.exports.useMiddleware = app => {
         next();
     });
 
-    seguridad.usarSeguridad(app, '/api/priv/');
+    security.useSecurity(app, '/api/priv/');
 }
 
 

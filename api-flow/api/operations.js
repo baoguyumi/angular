@@ -2,7 +2,7 @@ let items = [];
 
 module.exports = (app, url) => {
 
-  // api/pub/items
+  // api/priv/operations
   app.route(url)
     .get((req, res) => {
       if (items && items.length > 0)
@@ -13,6 +13,7 @@ module.exports = (app, url) => {
     .post((req, res) => {
       const item = req.body
       item._id = new Date().getTime().toString();
+      item.owner = req.user;
       items.push(item)
       res.status(201).json(item);
     })
@@ -20,17 +21,17 @@ module.exports = (app, url) => {
       items = [];
       res.status(204).send();
     });
-  // // api/pub/items/159
+  // // api/priv/operations/159
   app.route(`${url}/:id`)
     .get((req, res) => {
-      const index = getIndexById(req.params.id);
+      const index = getIndexByOwnerId(req.user, req.params.id);
       if (index)
         res.json(items[index]);
       else
         res.status(404).send();
     })
     .put((req, res) => {
-      const index = getIndexById(req.params.id);
+      const index = getIndexByOwnerId(req.user, req.params.id);
       if (index) {
         items[index] = req.body;
         res.json(items[index]);
@@ -40,7 +41,7 @@ module.exports = (app, url) => {
 
     })
     .delete((req, res) => {
-      const index = getIndexById(req.params.id);
+      const index = getIndexByOwnerId(req.user, req.params.id);
       if (index) {
         items.splice(index, 1)
         res.status(204).send();
@@ -49,6 +50,6 @@ module.exports = (app, url) => {
       }
     });
 
-  var getIndexById = (id) => items.findIndex(i => i._id == id);
+  var getIndexByOwnerId = (owner, id) => items.findIndex(i => i.owner == owner && i._id == id);
 
 }
