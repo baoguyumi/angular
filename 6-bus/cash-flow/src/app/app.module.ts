@@ -5,9 +5,10 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { BusService } from "app/bus.service";
+import { BusService } from 'app/bus.service';
 import { Http, XHRBackend, RequestOptions, HttpModule } from '@angular/http';
 import { HttpService } from 'app/http.service';
+import { SecurityService } from 'app/security.service';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,9 @@ import { HttpService } from 'app/http.service';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
-    LayoutModule
+    HttpModule,
+    LayoutModule,
+    SharedModule
   ],
   providers: [
     BusService,
@@ -24,7 +26,8 @@ import { HttpService } from 'app/http.service';
       provide: Http,
       useClass: HttpService,
       deps: [XHRBackend, RequestOptions, BusService]
-    }
+    },
+    SecurityService
   ],
   bootstrap: [AppComponent]
 })

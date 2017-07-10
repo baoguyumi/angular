@@ -8,19 +8,30 @@ import { environment } from './../environments/environment';
 export class SecurityService {
   private userTokenKey = 'userToken';
   private userKey = 'user';
-  private url = 'credentials';
+  private urlLogin = 'pub/login';
+  private urlRegister = 'pub/register';
 
   constructor(private bus: BusService, private http: Http, private router: Router) {
+    console.log('SecurityService');
     this.onSecurityErrNavigateToLogin();
     this.emitUserStatus();
   }
 
-  logInUser(credentials: IUserCredential) {
+  registerUser(credentials: IUserCredential) {
     this.http
-      .post(this.url, credentials)
+      .post(this.urlRegister, credentials)
       .subscribe(r => {
         this.saveUserToken(r);
-        this.getLoggedUser();
+        // this.getLoggedUser();
+      });
+  }
+
+  logInUser(credentials: IUserCredential) {
+    this.http
+      .post(this.urlLogin, credentials)
+      .subscribe(r => {
+        this.saveUserToken(r);
+        // this.getLoggedUser();
       });
   }
 
@@ -51,6 +62,7 @@ export class SecurityService {
     const userToken: string = response.json().access_token;
     localStorage.setItem(this.userTokenKey, userToken);
     this.bus.emitUserToken(userToken);
+    this.navigateTo(['/']);
   }
 
   private getLoggedUser() {
@@ -68,6 +80,7 @@ export class SecurityService {
   }
 
   private navigateTo(target: any, args?: any) {
+    console.log('navigateTo', target);
     this.router.navigate(target);
   }
 }

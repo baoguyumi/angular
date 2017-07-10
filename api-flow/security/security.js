@@ -13,7 +13,7 @@ module.exports = {
     userExists: userExists,
     createUser: createUser,
     isValidUser: isValidUser,
-    getNewToken: (user) => jwt.generaToken(user)
+    getNewToken: (user) => jwt.createToken(user)
 };
 
 function useSecurity(app, ruta) {
@@ -22,8 +22,8 @@ function useSecurity(app, ruta) {
         const authorization = req.get('Authorization');
         const pieces = authorization.split(' ');
         if (pieces && pieces.length > 0) {
-            const token = authorization.split(' ')[1];
-            token = jwt.verifyToken(token);
+            const authToken = authorization.split(' ')[1];
+            token = jwt.verifyToken(authToken);
         }
         if (token) {
             req.user = token.email;

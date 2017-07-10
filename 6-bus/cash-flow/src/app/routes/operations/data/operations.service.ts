@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { Http } from "@angular/http";
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 
 @Injectable()
 export class OperationsService {
-  private apiUrl = 'priv/movimientos';
+  private apiUrl = 'priv/operations';
   private operationsCount$: BehaviorSubject<number>;
   private operationsCount = 0;
 
@@ -34,7 +34,7 @@ export class OperationsService {
   }
 
   newOperation(): Operation {
-    return new Operation(new Date(), 0, "", 1, "");
+    return new Operation(new Date(), 0, '', 1, '');
   }
 
   saveOperation$(newOperation: Operation): Observable<any> {

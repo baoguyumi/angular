@@ -2,12 +2,12 @@ import { FormBuilder } from '@angular/forms';
 import { Http } from '@angular/http';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { SecurityService } from 'app/security.service';
 
 @Component({
   selector: 'cf-login',
   template: `
     <form [formGroup]="loginForm"
-        (ngSubmit)="onSubmit()"
         class="container">
     <section name="email-control">
       <label for="email">Email:</label>
@@ -27,8 +27,10 @@ import { Component, OnInit } from '@angular/core';
              password is required
       </small>
     </section>
-    <button type="submit"
-            [disabled]="loginForm.invalid">Log In</button>
+    <button (click)="onRegister()"
+      [disabled]="loginForm.invalid">Register</button>
+    <button (click)="onLogIn()"
+      [disabled]="loginForm.invalid">Log In</button>
     </form>
   `,
   styles: []
@@ -36,7 +38,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup
 
-  constructor(public http: Http, public formBuilder: FormBuilder) { }
+  constructor(public security: SecurityService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -45,13 +47,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onRegister() {
     const credentials = this.loginForm.value;
-    this.http
-      .post('pub/usuarios', credentials)
-      .subscribe(r => {
-        const token = r.json();
-        localStorage.setItem('token', token);
-      });
+    this.security
+      .registerUser(credentials)
+  }
+  onLogIn() {
+    const credentials = this.loginForm.value;
+    this.security
+      .logInUser(credentials)
   }
 }

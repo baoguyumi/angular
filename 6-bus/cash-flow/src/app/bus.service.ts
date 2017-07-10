@@ -37,6 +37,7 @@ export class BusService {
   }
   emitSecurityError(error) {
     const errMsg = this.getMessageFromError(error);
+    console.log('errMsg:', JSON.stringify(errMsg));
     this.emit(errMsg);
     this.securityErr$.next(errMsg);
   }
