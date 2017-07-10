@@ -5,7 +5,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   selector: 'cf-row',
   template: `
     <li>
-      {{ operation.description  }}: {{ operation.amount  }}€ on {{ operation.date | date:'dd-MM-yyyy' }} <button (click)="onDeleteClick()" >Delete</button> 
+      <a [routerLink]="['/operations',operation._id]">
+        {{ operation._id  }}
+      </a>
+      {{ operation.description  }} : {{ operation.amount  }} €
+      <button (click)="onDeleteClick()" >Delete</button>
     </li>
   `,
   styles: []

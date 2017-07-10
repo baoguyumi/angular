@@ -11,6 +11,7 @@ import { OperationsComponent } from './operations.component';
 import { NewComponent } from './new/new.component';
 import { ListComponent } from './list/list.component';
 import { RowComponent } from './list/row/row.component';
+import { ItemComponent } from 'app/routes/operations/item/item.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { RowComponent } from './list/row/row.component';
   declarations: [
     OperationsComponent,
     NewComponent,
+    ItemComponent,
     ListComponent,
     RowComponent
   ],

@@ -7,7 +7,7 @@ module.exports = (app, ruta) => {
                 console.log(`accepted: ${credential.email}`)
                 res.status(201).json(security.getNewToken(credential));
             } else {
-                console.log(`Invalid credential: ${JSON.stringify(result)}`)
+                console.log(`Invalid credential: ${JSON.stringify(credential)}`)
                 res.status(401).send('Invalid credential');
             }
         })

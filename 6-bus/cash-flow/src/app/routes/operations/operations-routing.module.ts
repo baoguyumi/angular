@@ -3,6 +3,7 @@ import { NewComponent } from './new/new.component';
 import { OperationsComponent } from './operations.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ItemComponent } from 'app/routes/operations/item/item.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
         component: ListComponent
       }
     ]
+  },
+  {
+    path: ':id',
+    component: ItemComponent
   }
 ];
 
