@@ -1,7 +1,7 @@
-import { HomeComponent } from './../../routes/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from "app/routes/login/login.component";
+import { HomeComponent } from 'app/routes/home/home.component';
+import { LoginComponent } from 'app/routes/login/login.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'operations',
-    loadChildren: './../../routes/operations/operations.module#OperationsModule'
+    loadChildren: 'app/routes/operations/operations.module#OperationsModule'
   }
 ];
 

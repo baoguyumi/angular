@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import { BusService } from 'app/bus.service';
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class OperationsService {
   private operationsCount$: BehaviorSubject<number>;
   private operationsCount = 0;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private bus: BusService) {
     this.initialize();
   }
 
@@ -61,6 +62,7 @@ export class OperationsService {
 
   private emitOperationCount() {
     this.operationsCount$.next(this.operationsCount);
+    this.bus.emit('operationsInSessionCount: ' + this.operationsCount);
   }
 
 }

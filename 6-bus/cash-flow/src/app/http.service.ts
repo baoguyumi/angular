@@ -26,10 +26,10 @@ export class HttpService extends Http {
   }
   private configureRequest(request: string | Request, options: RequestOptionsArgs) {
     if (typeof request === 'string') {
-      request = this.getApiUrl(request);
+      request = this.excludeAssets(request);
       this.setHeaders(options);
     } else {
-      request['url'] = this.getApiUrl(request['url']);
+      request['url'] = this.excludeAssets(request['url']);
       this.setHeaders(request);
     }
   }
@@ -39,7 +39,7 @@ export class HttpService extends Http {
       .catch(this.onCatch.bind(this));
     return observableRequest;
   }
-  private getApiUrl(currentUrl) {
+  private excludeAssets(currentUrl) {
     if (currentUrl.includes('/assets/')) {
       return currentUrl;
     } else {
