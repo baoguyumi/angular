@@ -12,7 +12,7 @@ module.exports = (app, rutaitems) => {
     })
     .post((req, res) => {
       let nuevoItem = req.body
-      nuevoItem._id = items.length;
+      nuevoItem._id = new Date().getTime().toString();
       items.push(nuevoItem)
       res.status(201).json(nuevoItem);
     })
